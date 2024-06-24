@@ -1,10 +1,9 @@
-# FROM golang:1.22.4-alpine as builder
-FROM golang:1.22.4 as builder
+FROM golang:1.22.4-alpine as builder
 
 WORKDIR /build
 
 # Git must be installed because go mod requires it to download dependencies
-# RUN apk --no-cache add git
+RUN apk --no-cache add git
 
 # COPY go.mod go.sum ./
 COPY go.mod ./
