@@ -10,7 +10,7 @@ Construir um banco de dados distribuído.
 
 Para construção da aplicação, foi utilizado os seguintes algoritmos:
 
-- Algoritmo Raft de consenso distribuído.
+- Algoritmo [Raft](https://thesecretlivesofdata.com/raft/) de consenso distribuído.
 
 - Relógio de Lamport.
 
