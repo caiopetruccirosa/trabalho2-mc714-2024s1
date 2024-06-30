@@ -1,17 +1,18 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-
-	"trabalho2.mc714.2024s1/lamport_clock"
-	"trabalho2.mc714.2024s1/leader_election"
-	"trabalho2.mc714.2024s1/mutual_exclusion"
 )
 
 func main() {
-	fmt.Println("Esse é o Trabalho 2 de MC714!")
+	flag.Parse()
 
-	lamport_clock.Execute_Lamport_Clock_Example()
-	leader_election.Execute_Leader_Election_Example()
-	mutual_exclusion.Execute_Mutex_Example()
+	fmt.Println("This is the server for the MC714 second assignment!")
+
+	// lamport_clock.Execute_Lamport_Clock_Example()
+	// leader_election.Execute_Leader_Election_Example()
+	// mutual_exclusion.Execute_Mutex_Example()
+
+	fmt.Println("Finishing server for the MC714 second assignment.")
 }
