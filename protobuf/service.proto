@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package myservice;
+
+service StorageService {
+  rpc ReceiveMessage (MessageRequest) returns (MessageReply) {}
+}
+
+message MessageRequest {
+  string message = 1;
+  int32 lamportTimestamp = 2;
+}
+
+message MessageReply {
+  string response = 1;
+}

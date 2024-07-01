@@ -1,0 +1,51 @@
+version: '3'
+services:
+  server1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_PORT=50051
+      - SERVER_ID=1
+    ports:
+      - "50051:50051"
+  
+  server2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_PORT=50052
+      - SERVER_ID=2
+    ports:
+      - "50052:50052"
+
+  server3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_PORT=50053
+      - SERVER_ID=3
+    ports:
+      - "50053:50053"
+
+  server4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_PORT=50054
+      - SERVER_ID=4
+    ports:
+      - "50054:50054"
+
+  server5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_PORT=50055
+      - SERVER_ID=5
+    ports:
+      - "50055:50055"

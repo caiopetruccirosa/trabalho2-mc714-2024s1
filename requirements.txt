@@ -1,0 +1,3 @@
+rich
+grpcio
+grpcio-tools
