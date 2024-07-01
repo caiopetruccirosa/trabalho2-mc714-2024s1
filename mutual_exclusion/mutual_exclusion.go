@@ -2,70 +2,8 @@ package main
 
 import (
 	"fmt"
-	"sync"
 	"time"
 )
-
-type LamportClock struct {
-	clock int
-	mutex sync.Mutex
-}
-
-func (lc *LamportClock) Tick() {
-	lc.mutex.Lock()
-	defer lc.mutex.Unlock()
-	lc.clock++
-}
-
-func (lc *LamportClock) UpdateClock(receivedClock int) {
-	lc.mutex.Lock()
-	defer lc.mutex.Unlock()
-	if receivedClock > lc.clock {
-		lc.clock = receivedClock + 1
-	} else {
-		lc.clock++
-	}
-}
-
-func (lc *LamportClock) GetClock() int {
-	lc.mutex.Lock()
-	defer lc.mutex.Unlock()
-	return lc.clock
-}
-
-func (lc *LamportClock) PrintClock() {
-	lc.mutex.Lock()
-	defer lc.mutex.Unlock()
-	fmt.Printf("Clock: %d\n", lc.clock)
-}
-
-type CentralDatabase struct {
-	data map[int]float64
-	lock sync.Mutex
-}
-
-func NewCentralDatabase() *CentralDatabase {
-	return &CentralDatabase{data: make(map[int]float64)}
-}
-
-func (db *CentralDatabase) ReadData(accountNumber int) *float64 {
-	db.lock.Lock()
-	defer db.lock.Unlock()
-	if amount, ok := db.data[accountNumber]; ok {
-		return &amount
-	}
-	return nil
-}
-
-func (db *CentralDatabase) UpdateData(accountNumber int, amount float64) {
-	db.lock.Lock()
-	defer db.lock.Unlock()
-	if _, ok := db.data[accountNumber]; ok {
-		db.data[accountNumber] += amount
-	} else {
-		db.data[accountNumber] = amount
-	}
-}
 
 type Bank struct {
 	id                int

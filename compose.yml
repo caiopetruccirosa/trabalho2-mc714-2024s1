@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  storage1:
+    image: storage-service
+    ports:
+      - "8081:8080"
+    networks:
+      - storage-network
+
+  storage2:
+    image: storage-service
+    ports:
+      - "8082:8080"
+    networks:
+      - storage-network
+
+  storage3:
+    image: storage-service
+    ports:
+      - "8083:8080"
+    networks:
+      - storage-network
+
+  storage4:
+    image: storage-service
+    ports:
+      - "8084:8080"
+    networks:
+      - storage-network
+
+  storage5:
+    image: storage-service
+    ports:
+      - "8085:8080"
+    networks:
+      - storage-network
+
+networks:
+  storage-network:
+    driver: bridge

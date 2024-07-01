@@ -17,3 +17,62 @@ service Sender {
   // Sends a greeting
   rpc SendRequest (Request) returns (Response) {}
 }
+
+// The storage service definition
+service StorageService {
+    // Creates a new account
+    rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse);
+
+    // Deletes an account
+    rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse);
+
+    // Retrieves account information
+    rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
+
+    // Adds to the balance of an account
+    rpc AddToBalance(AddToBalanceRequest) returns (AddToBalanceResponse);
+}
+
+// The request message containing the account details
+message CreateAccountRequest {
+    int32 accountID = 1;
+    string name = 2;
+}
+
+// The response message for account creation
+message CreateAccountResponse {
+    string message = 1;
+}
+
+// The request message for deleting an account
+message DeleteAccountRequest {
+    int32 accountID = 1;
+}
+
+// The response message for deleting an account
+message DeleteAccountResponse {
+    string message = 1;
+}
+
+// The request message for retrieving an account
+message GetAccountRequest {
+    int32 accountID = 1;
+}
+
+// The response message containing the account details
+message GetAccountResponse {
+    int32 accountID = 1;
+    string name = 2;
+    float balance = 3;
+}
+
+// The request message for adding to an account balance
+message AddToBalanceRequest {
+    int32 accountID = 1;
+    float amount = 2;
+}
+
+// The response message for adding to an account balance
+message AddToBalanceResponse {
+    string message = 1;
+}
