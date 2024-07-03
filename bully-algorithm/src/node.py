@@ -15,7 +15,7 @@ from enum import Enum
 # constants
 COORDINATOR_MESSAGE_TIMEOUT = 10.0
 NODE_RESPONSE_TIMEOUT = 2.5
-COORDINATOR_STATUS_TIMEOUT = 5.0
+COORDINATOR_STATUS_INTERVAL = 5.0
 
 class ElectionState(Enum):
     NOT_RUNNING = 1
@@ -135,7 +135,7 @@ class Node(NodeServicer):
                 election_thread = Thread(target=self._run_election)
                 election_thread.start()
             self.coordinator_id_cv.release()
-            time.sleep(COORDINATOR_STATUS_TIMEOUT)
+            time.sleep(COORDINATOR_STATUS_INTERVAL)
 
                 
     def _send_coordinator_message(self):
