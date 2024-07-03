@@ -2,15 +2,22 @@ syntax = "proto3";
 
 package myservice;
 
-service StorageService {
-  rpc ReceiveMessage (MessageRequest) returns (MessageReply) {}
+service NodeCommunicationService {
+  rpc ReceiveRequestResourceUsage (UsageRequest) returns (UsageResponse) {}
+  rpc ReceiveOkMessage (okMessage) returns (UsageResponse) {}
 }
 
-message MessageRequest {
-  string message = 1;
-  int32 lamportTimestamp = 2;
+message UsageRequest {
+  int64 key = 1;
+  int64 lamport_timestamp = 2;
+  int64 server_id = 3;
 }
 
-message MessageReply {
+message UsageResponse {
   string response = 1;
+}
+
+message okMessage {
+  int64 from_server_id = 1;
+  string response = 2;
 }
