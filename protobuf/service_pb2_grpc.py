@@ -30,7 +30,7 @@ if _version_not_supported:
     )
 
 
-class MyServiceStub(object):
+class NodeCommunicationServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -39,43 +39,59 @@ class MyServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ReceiveMessage = channel.unary_unary(
-                '/myservice.MyService/ReceiveMessage',
-                request_serializer=service__pb2.MessageRequest.SerializeToString,
-                response_deserializer=service__pb2.MessageReply.FromString,
+        self.ReceiveRequestResourceUsage = channel.unary_unary(
+                '/myservice.NodeCommunicationService/ReceiveRequestResourceUsage',
+                request_serializer=service__pb2.UsageRequest.SerializeToString,
+                response_deserializer=service__pb2.UsageResponse.FromString,
+                _registered_method=True)
+        self.ReceiveOkMessage = channel.unary_unary(
+                '/myservice.NodeCommunicationService/ReceiveOkMessage',
+                request_serializer=service__pb2.okMessage.SerializeToString,
+                response_deserializer=service__pb2.UsageResponse.FromString,
                 _registered_method=True)
 
 
-class MyServiceServicer(object):
+class NodeCommunicationServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def ReceiveMessage(self, request, context):
+    def ReceiveRequestResourceUsage(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ReceiveOkMessage(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_MyServiceServicer_to_server(servicer, server):
+def add_NodeCommunicationServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ReceiveMessage': grpc.unary_unary_rpc_method_handler(
-                    servicer.ReceiveMessage,
-                    request_deserializer=service__pb2.MessageRequest.FromString,
-                    response_serializer=service__pb2.MessageReply.SerializeToString,
+            'ReceiveRequestResourceUsage': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReceiveRequestResourceUsage,
+                    request_deserializer=service__pb2.UsageRequest.FromString,
+                    response_serializer=service__pb2.UsageResponse.SerializeToString,
+            ),
+            'ReceiveOkMessage': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReceiveOkMessage,
+                    request_deserializer=service__pb2.okMessage.FromString,
+                    response_serializer=service__pb2.UsageResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'myservice.MyService', rpc_method_handlers)
+            'myservice.NodeCommunicationService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('myservice.MyService', rpc_method_handlers)
+    server.add_registered_method_handlers('myservice.NodeCommunicationService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class MyService(object):
+class NodeCommunicationService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def ReceiveMessage(request,
+    def ReceiveRequestResourceUsage(request,
             target,
             options=(),
             channel_credentials=None,
@@ -88,9 +104,36 @@ class MyService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/myservice.MyService/ReceiveMessage',
-            service__pb2.MessageRequest.SerializeToString,
-            service__pb2.MessageReply.FromString,
+            '/myservice.NodeCommunicationService/ReceiveRequestResourceUsage',
+            service__pb2.UsageRequest.SerializeToString,
+            service__pb2.UsageResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ReceiveOkMessage(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/myservice.NodeCommunicationService/ReceiveOkMessage',
+            service__pb2.okMessage.SerializeToString,
+            service__pb2.UsageResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -14,17 +14,19 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\tmyservice\"!\n\x0eMessageRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\" \n\x0cMessageReply\x12\x10\n\x08response\x18\x01 \x01(\t2S\n\tMyService\x12\x46\n\x0eReceiveMessage\x12\x19.myservice.MessageRequest\x1a\x17.myservice.MessageReply\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\tmyservice\"I\n\x0cUsageRequest\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\x19\n\x11lamport_timestamp\x18\x02 \x01(\x03\x12\x11\n\tserver_id\x18\x03 \x01(\x03\"!\n\rUsageResponse\x12\x10\n\x08response\x18\x01 \x01(\t\"5\n\tokMessage\x12\x16\n\x0e\x66rom_server_id\x18\x01 \x01(\x03\x12\x10\n\x08response\x18\x02 \x01(\t2\xb4\x01\n\x18NodeCommunicationService\x12R\n\x1bReceiveRequestResourceUsage\x12\x17.myservice.UsageRequest\x1a\x18.myservice.UsageResponse\"\x00\x12\x44\n\x10ReceiveOkMessage\x12\x14.myservice.okMessage\x1a\x18.myservice.UsageResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'service_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_MESSAGEREQUEST']._serialized_start=28
-  _globals['_MESSAGEREQUEST']._serialized_end=61
-  _globals['_MESSAGEREPLY']._serialized_start=63
-  _globals['_MESSAGEREPLY']._serialized_end=95
-  _globals['_MYSERVICE']._serialized_start=97
-  _globals['_MYSERVICE']._serialized_end=180
+  _globals['_USAGEREQUEST']._serialized_start=28
+  _globals['_USAGEREQUEST']._serialized_end=101
+  _globals['_USAGERESPONSE']._serialized_start=103
+  _globals['_USAGERESPONSE']._serialized_end=136
+  _globals['_OKMESSAGE']._serialized_start=138
+  _globals['_OKMESSAGE']._serialized_end=191
+  _globals['_NODECOMMUNICATIONSERVICE']._serialized_start=194
+  _globals['_NODECOMMUNICATIONSERVICE']._serialized_end=374
 # @@protoc_insertion_point(module_scope)
