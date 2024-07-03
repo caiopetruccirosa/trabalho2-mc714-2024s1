@@ -1,16 +1,19 @@
 import grpc
-from concurrent import futures
 import time
 import os
 import logging
 import random
+
 # Import the generated classes
 import protobuf.service_pb2_grpc as service_pb2_grpc
 import protobuf.service_pb2 as service_pb2
 
+from concurrent import futures
 from storage.storage import Storage
 
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 """
 This file creates a gRPC server that communicates with other servers.
@@ -39,6 +42,7 @@ def serve():
         time.sleep(random.randint(10, 25))
         service.set_value(key, value)
         time.sleep(2)
+
 
 if __name__ == '__main__':
     serve()
