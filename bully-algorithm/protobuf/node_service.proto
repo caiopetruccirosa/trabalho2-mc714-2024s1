@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package node_service;
+
+service Node {
+  rpc RunElection (NodeRequest) returns (NodeResponse) {}
+  rpc ReceiveCoordinatorMessage (NodeRequest) returns (NodeResponse) {}
+  rpc GetCoordinatorStatus (NodeRequest) returns (NodeResponse) {}
+}
+
+message NodeRequest {
+  int32 node_id = 1;
+}
+
+message NodeResponse {}

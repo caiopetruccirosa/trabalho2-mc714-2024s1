@@ -1,0 +1,61 @@
+version: '3'
+services:
+  node1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_PORT=50051
+      - NODE_ID=1
+      - OTHER_NODES=2::localhost:50052,3::localhost:50053,4::localhost:50054,5::localhost:50055
+    network_mode: "host"
+    ports:
+      - "50051:50051"
+  
+  node2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_PORT=50052
+      - NODE_ID=2
+      - OTHER_NODES=1::localhost:50051,3::localhost:50053,4::localhost:50054,5::localhost:50055
+    network_mode: "host"
+    ports:
+      - "50052:50052"
+
+  node3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_PORT=50053
+      - NODE_ID=3
+      - OTHER_NODES=1::localhost:50051,2::localhost:50052,4::localhost:50054,5::localhost:50055
+    network_mode: "host"
+    ports:
+      - "50053:50053"
+
+  node4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_PORT=50054
+      - NODE_ID=4
+      - OTHER_NODES=1::localhost:50051,2::localhost:50052,3::localhost:50053,5::localhost:50055
+    network_mode: "host"
+    ports:
+      - "50054:50054"
+
+  node5:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_PORT=50055
+      - NODE_ID=5
+      - OTHER_NODES=1::localhost:50051,2::localhost:50052,3::localhost:50053,4::localhost:50054
+    network_mode: "host"
+    ports:
+      - "50055:50055"

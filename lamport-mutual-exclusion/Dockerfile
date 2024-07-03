@@ -1,4 +1,3 @@
-# Dockerfile for the server
 FROM python:3.9-slim
 
 WORKDIR /app
@@ -9,4 +8,4 @@ RUN pip install grpcio grpcio-tools joblib
 
 RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. protobuf/service.proto
 
-CMD ["python", "server2.py"]
+CMD ["python", "main.py"]
