@@ -2,7 +2,7 @@
 
 Este repositório contém o Trabalho 2 da disciplina MC714 - Sistemas Distribuídos, feito pelos alunos **Caio Petrucci dos Santos Rosa (RA 248245)** e **Jonathan do Ouro (RA 248364)**.
 
-O relatório e o vídeo explicativo do trabalho podem ser encontrados nos seguintes, respectivamente: [Relatório](dummy) e [Vídeo](dummy).
+O relatório e o vídeo explicativo do trabalho podem ser encontrados nos seguintes, respectivamente: [Relatório](RelatorioTrabalho2MC714.pdf) e [Vídeo](https://youtu.be/jauOp0dUIJQ).
 
 ## Algoritmos implementados
 
